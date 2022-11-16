@@ -1,24 +1,25 @@
+from polygon_calculator import Rectangle
+from polygon_calculator import Square
 import unittest
-import shape_calculator
 
 
 class UnitTests(unittest.TestCase):
     def setUp(self):
-        self.rect = shape_calculator.Rectangle(3, 6)
-        self.sq = shape_calculator.Square(5)
+        self.rect = Rectangle(3, 6)
+        self.sq = Square(5)
 
     def test_subclass(self):
-        actual = issubclass(shape_calculator.Square, shape_calculator.Rectangle)
+        actual = issubclass(Square, Rectangle)
         expected = True
         self.assertEqual(actual, expected, 'Expected Square class to be a subclass of the Rectangle class.')
 
     def test_distinct_classes(self):
-        actual = shape_calculator.Square is not shape_calculator.Rectangle
+        actual = Square is not Rectangle
         expected = True
         self.assertEqual(actual, expected, 'Expected Square class to be a distinct class from the Rectangle class.')
 
     def test_square_is_square_and_rectangle(self):
-        actual = isinstance(self.sq, shape_calculator.Square) and isinstance(self.sq, shape_calculator.Square)
+        actual = isinstance(self.sq, Square) and isinstance(self.sq, Square)
         expected = True
         self.assertEqual(actual, expected, 'Expected square object to be an instance of the Square class and the Rectangle class.')
 
@@ -100,13 +101,13 @@ class UnitTests(unittest.TestCase):
         self.assertEqual(actual, expected, 'Expected `get_amount_inside` to return 6.')
 
     def test_get_amount_inside_two_rectangles(self):
-        rect2 = shape_calculator.Rectangle(4, 8)
+        rect2 = Rectangle(4, 8)
         actual = rect2.get_amount_inside(self.rect)
         expected = 1
         self.assertEqual(actual, expected, 'Expected `get_amount_inside` to return 1.')
 
     def test_get_amount_inside_none(self):
-        rect2 = shape_calculator.Rectangle(2, 3)
+        rect2 = Rectangle(2, 3)
         actual = rect2.get_amount_inside(self.rect)
         expected = 0
         self.assertEqual(actual, expected, 'Expected `get_amount_inside` to return 0.')
